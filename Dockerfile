@@ -14,8 +14,11 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 RUN sudo apt update && \
 	sudo apt install -y mosquitto-clients net-tools jq curl alsa-base alsa-utils git make vim
 
-RUN git clone https://github.com/uatemycookie22/audio-input
-RUN cd audio-input 
+RUN cd /home/ubuntu && \
+	mkdir Documents
+RUN cd /home/ubuntu/Documents && \
+	git clone https://github.com/uatemycookie22/audio-input && \
+	cd audio-input 
 
 # Set as default user
 USER ubuntu
