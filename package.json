@@ -1,0 +1,17 @@
+{
+  "name": "audio_interface",
+  "version": "1.0.0",
+  "description": "Audio interface for recording audio, formatting it to JSON, and publishing it through mosquitto client.",
+  "main": "index.js",
+  "scripts": {
+    "util": "scripts/util.js",
+    "record": "arecord",
+    "record:5wav": "npm run record -- -d 5 -t wav temp.wav",
+    "record:1wav": "npm run record -- -d 1 -t wav temp.wav",
+    "format-audio": "npm run util -- --task=format",
+    "audio-pub": "mosquitto_pub",
+    "start": "node index.json"
+  },
+  "license": "MIT",
+  "author": ""
+}
