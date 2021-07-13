@@ -6,12 +6,22 @@
   "scripts": {
     "util": "scripts/util.js",
     "record": "arecord",
-    "record:5wav": "npm run record -- -d 5 -t wav temp.wav",
-    "record:1wav": "npm run record -- -d 1 -t wav temp.wav",
-    "format-audio": "npm run util -- --task=format",
-    "audio-pub": "mosquitto_pub",
+    "record:5wav": "npm run record -- -d 5 -t wav -r 16000 temp.wav",
+    "record:1wav": "npm run record -- -d 1 -t wav -r 16000 temp.wav",
+    "format-audio": "npm run util --task=format",
+    "audio-pub": "mosquitto_pub -h 127.0.0.1 -p 1883 -t /audio",
+    "format-audio:temp":"npm run util --task=format --name=temp --type=wav --audio_file=./temp.wav",
+    "audio-pub:temp":"mosquitto_pub -h 127.0.0.1 -p 1883 -t /audio -f temp.json",
     "start": "node index.json"
   },
   "license": "MIT",
-  "author": ""
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uatemycookie22/audio-input.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uatemycookie22/audio-input/issues"
+  },
+  "homepage": "https://github.com/uatemycookie22/audio-input#readme"
 }
