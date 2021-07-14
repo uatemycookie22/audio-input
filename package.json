@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "util": "scripts/util.js",
-    "record": "arecord",
-    "record:5wav": "npm run record -- -d 5 -t wav -r 16000 temp.wav",
-    "record:1wav": "npm run record -- -d 1 -t wav -r 16000 temp.wav",
+    "record": "sudo arecord -r 16000",
+    "record:5wav": "npm run record -- -d 5 -t wav temp.wav",
+    "record:1wav": "npm run record -- -d 1 -t wav temp.wav",
     "format-audio": "npm run util --task=format",
     "audio-pub": "mosquitto_pub -h 127.0.0.1 -p 1883 -t /audio",
     "format-audio:temp":"npm run util --task=format --name=temp --type=wav --audio_file=./temp.wav",
     "audio-pub:temp":"mosquitto_pub -h 127.0.0.1 -p 1883 -t /audio -f temp.json",
+    "all": "npm run record:5wav && npm run format-audio:temp && npm run audio-pub:temp",
     "start": "node index.json"
   },
   "license": "MIT",
